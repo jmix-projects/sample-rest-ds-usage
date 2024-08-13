@@ -1,0 +1,4 @@
+rootProject.name = 'sample-rest-ds-usage'
+
+includeBuild 'customers'
+includeBuild 'orders'
