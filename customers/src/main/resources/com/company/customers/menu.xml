@@ -3,6 +3,11 @@
 
     <menu id="application" title="msg://com.company.customers/menu.application.title" opened="true">
         <item view="User.list" title="msg://com.company.customers.view.user/UserListView.title"/>
+        <item view="Customer.list" title="msg://com.company.customers.view.customer/customerListView.title"/>
+        <item view="CustomerRegion.list"
+              title="msg://com.company.customers.view.customerregion/customerRegionListView.title"/>
+        <item view="CustomerPreference.list"
+              title="msg://com.company.customers.view.customerpreference/customerPreferenceListView.title"/>
     </menu>
 
 </menu-config>

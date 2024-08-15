@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://customerPreferenceListView.title"
+      focusComponent="customerPreferencesDataGrid">
+    <data>
+        <collection id="customerPreferencesDc"
+                    class="com.company.customers.entity.CustomerPreference">
+            <fetchPlan extends="_base">
+                <property name="customer" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="customerPreferencesDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from CustomerPreference e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="customerPreferencesDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createBtn" action="customerPreferencesDataGrid.create"/>
+            <button id="editBtn" action="customerPreferencesDataGrid.edit"/>
+            <button id="removeBtn" action="customerPreferencesDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="customerPreferencesDl"/>
+        </hbox>
+        <dataGrid id="customerPreferencesDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="customerPreferencesDc"
+                  columnReorderingAllowed="true">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns resizable="true">
+                <column property="customer"/>
+                <column property="preferenceType"/>
+                <column property="preferenceValue"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectBtn" action="selectAction"/>
+            <button id="discardBtn" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>
