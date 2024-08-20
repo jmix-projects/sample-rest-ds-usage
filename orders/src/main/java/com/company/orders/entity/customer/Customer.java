@@ -37,11 +37,14 @@ public class Customer {
 
     private CustomerRegion region;
 
-    @Composition
+    @Composition(inverse = "customer")
     private Set<CustomerContact> contacts;
 
     @Embedded
     private CustomerAddress address;
+
+    @Composition
+    private CustomerInfo info;
 
     public String getEmail() {
         return email;
@@ -91,7 +94,15 @@ public class Customer {
         this.address = address;
     }
 
-        public OffsetDateTime getLastModifiedDate() {
+    public CustomerInfo getInfo() {
+        return info;
+    }
+
+    public void setInfo(CustomerInfo info) {
+        this.info = info;
+    }
+
+    public OffsetDateTime getLastModifiedDate() {
         return lastModifiedDate;
     }
 

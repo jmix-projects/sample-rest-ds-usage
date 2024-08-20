@@ -5,5 +5,6 @@
     <fetchPlan entity="Customer" name="customer-with-all-details" extends="_base">
         <property name="region" fetchPlan="_base"/>
         <property name="contacts" fetchPlan="_base"/>
+        <property name="info" fetchPlan="_base"/>
     </fetchPlan>
 </fetchPlans>

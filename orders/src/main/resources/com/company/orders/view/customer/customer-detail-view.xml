@@ -29,6 +29,12 @@
             </entityPicker>
             <textField id="zipField" property="address.zip"/>
             <textField id="addressLineField" property="address.addressLine"/>
+            <entityPicker id="infoField" property="info">
+                <actions>
+                    <action id="entityLookup" type="entity_openComposition"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
         </formLayout>
         <hbox>
             <button action="contactsDataGrid.create"/>

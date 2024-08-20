@@ -9,6 +9,7 @@
             <fetchPlan extends="_base">
                 <property name="region" fetchPlan="_base"/>
                 <property name="address" fetchPlan="_base"/>
+                <property name="info" fetchPlan="_base"/>
             </fetchPlan>
             <loader id="customersDl" readOnly="true">
                 <query>

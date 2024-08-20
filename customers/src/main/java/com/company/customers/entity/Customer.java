@@ -20,7 +20,8 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "CUSTOMER", indexes = {
-        @Index(name = "IDX_CUSTOMER_REGION", columnList = "REGION_ID")
+        @Index(name = "IDX_CUSTOMER_REGION", columnList = "REGION_ID"),
+        @Index(name = "IDX_CUSTOMER_INFO", columnList = "INFO_ID")
 })
 @Entity
 public class Customer {
@@ -74,6 +75,19 @@ public class Customer {
             @AttributeOverride(name = "addressLine", column = @Column(name = "ADDRESS_ADDRESS_LINE"))
     })
     private CustomerAddress address;
+
+    @JoinColumn(name = "INFO_ID")
+    @Composition
+    @OneToOne(fetch = FetchType.LAZY)
+    private CustomerInfo info;
+
+    public CustomerInfo getInfo() {
+        return info;
+    }
+
+    public void setInfo(CustomerInfo info) {
+        this.info = info;
+    }
 
     public CustomerAddress getAddress() {
         return address;
