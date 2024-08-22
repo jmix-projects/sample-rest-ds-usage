@@ -7,5 +7,10 @@
         <property name="region" fetchPlan="_base"/>
         <property name="contacts" fetchPlan="_base"/>
         <property name="info" fetchPlan="_base"/>
+        <property name="address" fetchPlan="customerAddress-full"/>
+    </fetchPlan>
+
+    <fetchPlan entity="CustomerAddress" name="customerAddress-full" extends="_base">
+        <property name="country" fetchPlan="_base"/>
     </fetchPlan>
 </fetchPlans>

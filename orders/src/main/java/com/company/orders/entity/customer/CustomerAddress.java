@@ -17,15 +17,23 @@
 package com.company.orders.entity.customer;
 
 import io.jmix.core.metamodel.annotation.JmixEntity;
-import jakarta.persistence.Embeddable;
 
-@Embeddable
 @JmixEntity
 public class CustomerAddress {
 
     private String zip;
 
     private String addressLine;
+
+    private Country country;
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
 
     public String getAddressLine() {
         return addressLine;

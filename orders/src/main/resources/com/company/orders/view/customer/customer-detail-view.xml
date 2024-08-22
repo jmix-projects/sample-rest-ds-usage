@@ -8,6 +8,10 @@
             <loader id="customerDl"/>
             <collection id="contactsDc" property="contacts"/>
         </instance>
+        <collection id="countriesDc" class="com.company.orders.entity.customer.Country">
+            <fetchPlan extends="_base"/>
+            <loader id="countriesDl" readOnly="true"/>
+        </collection>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -28,6 +32,12 @@
                 </actions>
             </entityPicker>
             <textField id="zipField" property="address.zip"/>
+            <entityComboBox id="countriesComboBox" itemsContainer="countriesDc" property="address.country">
+                <actions>
+                    <action id="lookupAction" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityComboBox>
             <textField id="addressLineField" property="address.addressLine"/>
             <entityPicker id="infoField" property="info">
                 <actions>

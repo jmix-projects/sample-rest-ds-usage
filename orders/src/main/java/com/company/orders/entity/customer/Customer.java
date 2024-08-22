@@ -1,10 +1,11 @@
 package com.company.orders.entity.customer;
 
 import io.jmix.core.MetadataTools;
+import io.jmix.core.entity.annotation.EmbeddedParameters;
+import io.jmix.core.entity.annotation.JmixEmbedded;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.entity.annotation.JmixId;
 import io.jmix.core.metamodel.annotation.*;
-import jakarta.persistence.Embedded;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.OffsetDateTime;
@@ -40,7 +41,8 @@ public class Customer {
     @Composition(inverse = "customer")
     private Set<CustomerContact> contacts;
 
-    @Embedded
+    @JmixEmbedded
+    @EmbeddedParameters(nullAllowed = false)
     private CustomerAddress address;
 
     @Composition

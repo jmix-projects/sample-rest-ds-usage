@@ -7,6 +7,7 @@
         <item view="CustomerRegion.list"
               title="msg://com.company.orders.view.customerregion/customerRegionListView.title"/>
         <item view="Order_.list" title="msg://com.company.orders.view.order/orderListView.title"/>
+        <item view="Country.list" title="msg://com.company.orders.view.country/countryListView.title"/>
     </menu>
 
 </menu-config>

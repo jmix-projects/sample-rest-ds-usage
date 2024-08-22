@@ -8,6 +8,7 @@
               title="msg://com.company.customers.view.customerregion/customerRegionListView.title"/>
         <item view="CustomerPreference.list"
               title="msg://com.company.customers.view.customerpreference/customerPreferenceListView.title"/>
+        <item view="Country.list" title="msg://com.company.customers.view.country/countryListView.title"/>
     </menu>
 
 </menu-config>

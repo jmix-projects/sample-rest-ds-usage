@@ -8,12 +8,20 @@
             <fetchPlan extends="_base">
                 <property name="region" fetchPlan="_base"/>
                 <property name="contacts" fetchPlan="_base"/>
-                <property name="address" fetchPlan="_base"/>
+                <property name="address" fetchPlan="customerAddress-full"/>
                 <property name="info" fetchPlan="_base"/>
             </fetchPlan>
             <loader id="customerDl"/>
             <collection id="contactsDc" property="contacts"/>
         </instance>
+        <collection id="countriesDc" class="com.company.customers.entity.Country">
+            <fetchPlan extends="_base"/>
+            <loader id="countriesDl" readOnly="true">
+                <query>
+                    <![CDATA[select c from Country c order by c.code]]>
+                </query>
+            </loader>
+        </collection>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -34,6 +42,12 @@
                 </actions>
             </entityPicker>
             <textField id="addressZipField" property="address.zip"/>
+            <entityComboBox id="countriesComboBox" itemsContainer="countriesDc" property="address.country">
+                <actions>
+                    <action id="lookupAction" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityComboBox>
             <textField id="addressAddressLineField" property="address.addressLine"/>
             <entityPicker id="infoField" property="info">
                 <actions>
@@ -48,7 +62,7 @@
             <button action="contactsDataGrid.edit"/>
             <button action="contactsDataGrid.remove"/>
         </hbox>
-        <dataGrid id="contactsDataGrid" dataContainer="contactsDc" width="100%" minHeight="20em">
+        <dataGrid id="contactsDataGrid" dataContainer="contactsDc" width="100%" minHeight="10em">
             <actions>
                 <action id="create" type="list_create">
                     <properties>
